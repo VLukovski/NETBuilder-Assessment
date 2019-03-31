@@ -126,7 +126,7 @@ public class Family {
 		List<String> offspring = new ArrayList<>();
 		offspring.addAll(children);
 		for(String child : children) {
-			if (this.getChildrenOf(child).size() != 0 && !offspring.contains(name)) {
+			if (this.getChildrenOf(child).size() != 0 && !offspring.contains(child)) {
 				offspring.addAll(this.getChildrenOf(child));
 			}
 		}
