@@ -1,8 +1,11 @@
 package com.qa.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.qa.assessment.Family;
@@ -144,13 +147,16 @@ public class FamilyTest {
 		fam.setParentOf("Vera", "Vanessa");
 		fam.setParentOf("Mary", "John");
 		fam.setParentOf("Mary", "Vanessa");
+		fam.setParentOf("Vanessa", "John");
+		assertTrue(fam.setParentOf("John", "Sam")); //This is for creating enough layers in the family tree to check if the recursion actually works the way I want it to
+		assertFalse(fam.setParentOf("John", "Vera")); //Same as above
 		fam.female("Vanessa");
 		assertFalse(fam.female("George"));
 		assertTrue(fam.isMale("George"));
 		assertFalse(fam.female("John"));
 		assertTrue(fam.isMale("John"));
 	}
-	
+
 	@Test
 	public void assessmentPaperTest() {
 		assertTrue(fam.setParentOf("Frank", "Morgan"));
